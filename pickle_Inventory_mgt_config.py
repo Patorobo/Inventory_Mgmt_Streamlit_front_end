@@ -22,10 +22,7 @@ Machine Learning Predictive Analysis.''')
 st.header('Historical Sales Items Visualization')
 st.markdown('**------------------------------------------------------------------------------------------------------------------------------**')
 
-sales_records = pd.read_csv("https:\\github.com\Patorobo\Inventory_Mgmt_Streamlit_front_end\blob\omain\SalesKaggle3.csv")
-sales_records_hist = sales_records[['SKU_number','SoldCount','PriceReg','ItemCount']][sales_records['File_Type'] == 'Historical']
-top_sales = sales_records_hist.sort_values(['SoldCount'], ascending=False).head(20)
-buttom_sales = sales_records_hist.sort_values(['SoldCount'], ascending=True).head(20)
+
 
 if st.checkbox('Show Detailed Historical Top 20 SKU with highest Sold Count'):
     st.subheader('Detailed: SKU with Highest SoldCount Inventory')
