@@ -60,7 +60,7 @@ if st.checkbox('Show Detailed Historical Top 20 SKU with Lowest Sold Count'):
 
 st.header('Historical Records: Turnover Ratio Metric')
 st.markdown('**------------------------------------------------------------------------------------------------------------------------------**')
-sales_records = pd.read_csv("C:/Users/robou/OneDrive/Documents/CETMPROM02_Project/Project Dissertation/ML_Pipeline/Data_Set/Saleskaggle3.csv")
+sales_records = pd.read_csv(uploaded_file)
 kp_indicator = sales_records[['SoldCount','PriceReg','ItemCount','File_Type']][sales_records['File_Type'] == 'Historical']
 kp_indicator['COGS'] = kp_indicator['SoldCount']*kp_indicator['PriceReg']
 kp_indicator['ItemCount_AfterSales'] = kp_indicator['ItemCount']-kp_indicator['SoldCount']
@@ -84,6 +84,7 @@ st.write(Inv_turnOver)
 st.header('Active/Current Items Inventory Visualization')
 st.markdown('**------------------------------------------------------------------------------------------------------------------------------**')
 
+sales_records = pd.read_csv(uploaded_file)
 sales_records_act = sales_records[['SKU_number','SoldCount','PriceReg','ItemCount']][sales_records['File_Type'] == 'Active']
 top_count = sales_records_act.sort_values(['ItemCount'], ascending=False).head(20)
 buttom_count = sales_records_act.sort_values(['ItemCount'], ascending=True).head(20)
@@ -105,7 +106,7 @@ if st.checkbox('Show Detailed Active Top 20 SKU with Lowest ItemCount Inventory'
 st.header('ABC Analysis of Active/Current Inventory')
 st.markdown('**------------------------------------------------------------------------------------------------------------------------------**')
 
-sales_records = pd.read_csv("C:/Users/robou/OneDrive/Documents/CETMPROM02_Project/Project Dissertation/ML_Pipeline/Data_Set/Saleskaggle3.csv")
+sales_records = pd.read_csv(uploaded_file)
 sales_records_act = sales_records[['SKU_number','PriceReg','ItemCount','File_Type']][sales_records['File_Type'] == 'Active']
 sales_records_act['AddCost'] = sales_records_act['PriceReg'] * sales_records_act['ItemCount']
 sales_records_act_1 = sales_records_act.groupby(['SKU_number']).agg(Volume=('ItemCount',np.sum),Revenue=('AddCost',np.sum)).reset_index()
