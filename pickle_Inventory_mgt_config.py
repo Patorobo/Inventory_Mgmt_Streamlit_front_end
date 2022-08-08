@@ -127,6 +127,7 @@ with st.sidebar:
 st.header('Machine Learning Predictive Analysis')
 st.markdown('**------------------------------------------------------------------------------------------------------------------------------**')
 
+model = pickle.load(open('https:\\drive.google.com\file\d\16JeC6RGE8gp71snHUbcPFRJIfBBtKQ09','rb'))
 
 def main():
     st.subheader('Machine Learning Prediction')
